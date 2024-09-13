@@ -4,12 +4,12 @@ const agendamentosRouter = require('./routes/agendamentos');
 const app = express();
 
 // Conectar ao MongoDB
-mongoose.connect('mongodb+srv://admin:fee3gpEjh4jPFPK0@cluster0.0ld9lce.mongodb.net/bancoteste?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-  .then(() => console.log('Conectado ao MongoDB'))
-  .catch(err => console.error('Erro ao conectar ao MongoDB', err));
+.then(() => console.log('Conectado ao MongoDB Atlas'))
+.catch(err => console.error('Erro ao conectar ao MongoDB', err));
 
 // Middleware para entender JSON
 app.use(express.json());
