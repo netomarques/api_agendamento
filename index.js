@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require("cors");
 const agendamentosRouter = require('./routes/agendamentos');
 const app = express();
 
@@ -10,6 +11,9 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => console.log('Conectado ao MongoDB Atlas'))
 .catch(err => console.error('Erro ao conectar ao MongoDB', err));
+
+// Habilita o CORS
+app.use(cors());
 
 // Middleware para entender JSON
 app.use(express.json());
